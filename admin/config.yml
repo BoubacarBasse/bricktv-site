@@ -1,0 +1,152 @@
+# Brick TV - Sveltia CMS
+#
+# Git-based: every save here is a commit to the repo, which triggers a Netlify
+# rebuild. No database, no server to keep running.
+#
+# Sign-in: the GitHub backend needs an OAuth relay. Netlify can act as one -
+# see README "Admin panel". Until that is wired up, sign in with a GitHub
+# personal access token (repo scope), which needs no setup at all.
+
+backend:
+  name: github
+  repo: BoubacarBasse/bricktv-site
+  branch: main
+
+# Uploads land here and are referenced from the site root.
+media_folder: assets/uploads
+public_folder: /assets/uploads
+
+# Shrink phone photos on the way in so full-res originals never hit the site.
+media_libraries:
+  default:
+    config:
+      max_file_size: 12000000
+      transformations:
+        raster_image:
+          format: webp
+          quality: 82
+          width: 2000
+          height: 2000
+
+collections:
+  - name: portfolios
+    label: Portfolios
+    description: The work shown on each artist page.
+    files:
+      - name: video
+        label: Video - Dr. JPEG
+        file: content/video.json
+        description: Films on the Video page. Paste a YouTube link or its ID.
+        fields:
+          - name: items
+            label: Films
+            label_singular: Film
+            widget: list
+            summary: '{{fields.title}}'
+            fields:
+              - { name: youtube_id, label: YouTube ID or link, widget: string, hint: "Either the full link or just the ID, e.g. elVKPybLQb0" }
+              - { name: title, label: Title, widget: string, required: false }
+
+      - name: photo
+        label: Photo - Loic Matabishi
+        file: content/photo.json
+        description: Images on the Photo page.
+        fields:
+          - name: items
+            label: Photographs
+            label_singular: Photograph
+            widget: list
+            summary: '{{fields.caption}}'
+            fields:
+              - { name: image, label: Image, widget: image }
+              - { name: alt, label: Alt text, widget: string, required: false, hint: "Describes the image for screen readers and search." }
+              - { name: caption, label: Caption, widget: string, required: false }
+
+      - name: audio
+        label: Audio - Maz the Prod
+        file: content/audio.json
+        description: Tracks on the Audio page.
+        fields:
+          - name: items
+            label: Tracks
+            label_singular: Track
+            widget: list
+            summary: '{{fields.title}}'
+            fields:
+              - { name: title, label: Title, widget: string }
+              - { name: audio, label: Audio file, widget: file, hint: "MP3 or WAV." }
+              - { name: note, label: Note, widget: string, required: false }
+
+      - name: fashion
+        label: Fashion - dystopian
+        file: content/fashion.json
+        description: Looks on the Fashion page.
+        fields:
+          - name: items
+            label: Looks
+            label_singular: Look
+            widget: list
+            summary: '{{fields.caption}}'
+            fields:
+              - { name: image, label: Image, widget: image }
+              - { name: alt, label: Alt text, widget: string, required: false }
+              - { name: caption, label: Caption, widget: string, required: false }
+
+  - name: features
+    label: Feature images
+    description: The wide image at the foot of each artist page, and the home hero.
+    files:
+      - name: home-hero
+        label: Home hero
+        file: content/home-hero.json
+        description: Background frames behind the BRICK TV wordmark. Add up to three; they cross-fade.
+        fields:
+          - name: items
+            label: Hero frames
+            label_singular: Frame
+            widget: list
+            max: 3
+            fields:
+              - { name: image, label: Image, widget: image }
+              - { name: alt, label: Alt text, widget: string, required: false }
+
+      - name: video-feature
+        label: Video page feature
+        file: content/video-feature.json
+        fields: &feature_fields
+          - name: items
+            label: Feature image
+            widget: list
+            max: 1
+            fields:
+              - { name: image, label: Image, widget: image }
+              - { name: alt, label: Alt text, widget: string, required: false }
+              - { name: caption, label: Caption, widget: string, required: false }
+
+      - name: photo-feature
+        label: Photo page feature
+        file: content/photo-feature.json
+        fields: *feature_fields
+
+      - name: audio-feature
+        label: Audio page feature
+        file: content/audio-feature.json
+        fields: *feature_fields
+
+      - name: fashion-feature
+        label: Fashion page feature
+        file: content/fashion-feature.json
+        fields: *feature_fields
+
+  - name: settings
+    label: Settings
+    files:
+      - name: site
+        label: Contact details
+        file: content/site.json
+        description: Phone, email and booking link used across the site.
+        fields:
+          - { name: phone, label: Phone, widget: string }
+          - { name: email, label: Email, widget: string }
+          - { name: booking_url, label: Booking link, widget: string, hint: "Clear this to send every Book button to the call/email fallback instead." }
+          - { name: languages, label: Languages line, widget: string }

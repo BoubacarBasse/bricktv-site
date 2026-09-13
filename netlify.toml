@@ -1,0 +1,55 @@
+# Brick TV marketing site - static, no build step.
+[build]
+  publish = "."
+
+# The four craft sections and the five-member strip became one page per artist,
+# so the old shared pages no longer have an equivalent. Send them home.
+[[redirects]]
+  from = "/crafts.html"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/members.html"
+  to = "/"
+  status = 301
+  force = true
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    X-Frame-Options = "SAMEORIGIN"
+
+[[headers]]
+  for = "/assets/img/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/assets/uploads/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/assets/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/assets/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
+
+[[headers]]
+  for = "/assets/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
+
+# Content the CMS edits: must never be served stale or the site shows old work.
+[[headers]]
+  for = "/content/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"

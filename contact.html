@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact | Brick TV</title>
+<meta name="description" content="Call, email or book a consultation with the Brick TV crew. Winnipeg and ~200 km around.">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/fonts.css">
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="page">
+
+  <nav class="nav">
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <a class="nav__wordmark" href="index.html" aria-label="Brick TV - home"><span class="wordmark" data-wordmark data-intensity="subtle">BRICK TV</span></a>
+    <div class="nav__links" id="nav-links">
+      <a href="audio.html">Audio</a>
+      <a href="photo.html">Photo</a>
+      <a href="video.html">Video</a>
+      <a href="fashion.html">Fashion</a>
+      <a href="faq.html">FAQ</a>
+      <a href="contact.html" aria-current="page">Contact</a>
+    </div>
+    <button class="nav__book" type="button" data-book>Book</button>
+  </nav>
+
+  <main id="main">
+
+  <header class="page-header">
+    <p class="eyebrow">Get in touch</p>
+    <h1 class="h1">Talk to us.</h1>
+  </header>
+
+  <section class="faq-section" style="max-width:1100px">
+    <div class="contact-page-grid">
+      <div>
+        <p class="body-copy" style="margin-top:0">No office, no front desk, the workshop comes to you. Winnipeg &amp; ~200 km around; farther when the project calls for it.</p>
+        <div class="contact-rows" style="margin-top:28px">
+          <a href="tel:2045578560">
+            <span class="contact-tile" aria-hidden="true">
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+            </span>204-557-8560</a>
+          <a href="mailto:Mohamedouldmoulaye0510@gmail.com">
+            <span class="contact-tile" aria-hidden="true">
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16"/><path d="m2 6 10 7 10-7"/></svg>
+            </span>Mohamedouldmoulaye0510@gmail.com</a>
+          <span class="row">
+            <span class="contact-tile" aria-hidden="true">
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+            </span>On this brick 24/7</span>
+          <span class="contact-langs" style="color:var(--bone-muted)">EN &middot; FR &middot; AR &middot; Darija &middot; Swahili</span>
+        </div>
+        <button class="btn btn--primary" type="button" data-book style="margin-top:28px">Book an appointment</button>
+        <p style="font-size:13px; color:var(--bone-muted); margin:12px 0 0">A consultation is how every project starts.</p>
+      </div>
+
+      <div class="ask-panel">
+        <h2>Send us a question</h2>
+        <p>It goes straight to the crew&rsquo;s inbox.</p>
+        <form class="ask-form" name="ask" method="POST" data-netlify="true" netlify-honeypot="company" novalidate>
+          <input type="hidden" name="form-name" value="ask">
+          <p class="ask-form__hp">
+            <label>Leave this field empty <input name="company" tabindex="-1" autocomplete="off"></label>
+          </p>
+          <label class="visually-hidden" for="ask-email">Your email address</label>
+          <input id="ask-email" name="email" type="email" required placeholder="you@email.com" autocomplete="email">
+          <label class="visually-hidden" for="ask-question">Your question</label>
+          <textarea id="ask-question" name="question" rows="5" required placeholder="Your question..."></textarea>
+          <button class="btn btn--send" type="submit">Send the question</button>
+          <p class="ask-status" role="status" hidden></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  </main>
+
+  <footer class="footer footer--compact">
+    <span class="footer__wordmark">BRICK TV</span>
+    <span><a href="tel:2045578560">204-557-8560</a> &middot; <a href="mailto:Mohamedouldmoulaye0510@gmail.com">Mohamedouldmoulaye0510@gmail.com</a></span>
+  </footer>
+
+</div>
+<script src="assets/js/site.js"></script>
+</body>
+</html>
