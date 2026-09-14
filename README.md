@@ -3,6 +3,9 @@
 Marketing site for Brick TV, a Winnipeg production house of independent artists.
 Static HTML, no framework, no build step. Live at https://brick-tv.netlify.app
 
+Netlify builds from this repo: push to `main` and the site updates. There is no
+build command; `netlify.toml` publishes the repo root as-is.
+
 ```
 index.html      home
 video.html      Dr. JPEG        photo.html    Loic Matabishi
@@ -81,8 +84,6 @@ Sveltia is pinned to 0.211.5 in `admin/index.html`. Bump it deliberately.
 - **Social links** - Instagram, Spotify and Apple Music icons render inert; no
   URLs supplied yet.
 - **Film titles** - taken from YouTube and lightly tidied. Rename any in the CMS.
-- **Netlify badge** - turn off at Project configuration → General → Powered by
-  Netlify badge. There is no API for it.
 - **Contact details** - phone and email are unverified; the client called the
   email temporary.
 
