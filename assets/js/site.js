@@ -14,8 +14,8 @@
      routes every Book button to the call/email fallback modal instead. */
   var CONFIG = {
     bookingUrl: 'https://calendly.com/boubacarbasse333/onboarding-call',
-    phone: '204-557-8560',
-    phoneHref: 'tel:2045578560',
+    phone: '204-998-3654',
+    phoneHref: 'tel:2049983654',
     email: 'Mohamedouldmoulaye0510@gmail.com'
   };
 

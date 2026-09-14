@@ -1,8 +1,40 @@
 {
   "items": [
     {
-      "image": "/assets/uploads/hero-team.webp",
-      "alt": "The Brick TV crew"
+      "image": "/assets/uploads/hero-01-checkerboard.webp",
+      "alt": "Crowned figure on the red checkerboard set"
+    },
+    {
+      "image": "/assets/uploads/hero-02.webp",
+      "alt": "Figure in green on the checkerboard set"
+    },
+    {
+      "image": "/assets/uploads/hero-03.webp",
+      "alt": "Editorial set piece in red and orange"
+    },
+    {
+      "image": "/assets/uploads/hero-04.webp",
+      "alt": "Portrait in red eyewear against orange"
+    },
+    {
+      "image": "/assets/uploads/hero-05.webp",
+      "alt": "Leather jacket portrait against orange"
+    },
+    {
+      "image": "/assets/uploads/hero-06.webp",
+      "alt": "Guitarist under red light"
+    },
+    {
+      "image": "/assets/uploads/hero-07.webp",
+      "alt": "Wax print styling on olive"
+    },
+    {
+      "image": "/assets/uploads/hero-08.webp",
+      "alt": "Wax print headwrap portrait"
+    },
+    {
+      "image": "/assets/uploads/hero-09.webp",
+      "alt": "Production still"
     }
   ]
 }

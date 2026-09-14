@@ -99,13 +99,13 @@ collections:
       - name: home-hero
         label: Home hero
         file: content/home-hero.json
-        description: Background frames behind the BRICK TV wordmark. Add up to three; they cross-fade.
+        description: Background frames behind the BRICK TV wordmark. They cross-fade, about six seconds each.
         fields:
           - name: items
             label: Hero frames
             label_singular: Frame
             widget: list
-            max: 3
+            max: 12
             fields:
               - { name: image, label: Image, widget: image }
               - { name: alt, label: Alt text, widget: string, required: false }

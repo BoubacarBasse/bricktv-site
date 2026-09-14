@@ -25,7 +25,7 @@ this repo, Netlify rebuilds, and the page updates in about a minute.
 
 - **Portfolios** - films, photographs, tracks, looks
 - **Feature images** - the wide image at the foot of each artist page, and the
-  home hero (up to three frames, they cross-fade)
+  home hero (up to twelve frames, cross-fading about every six seconds)
 - **Settings** - phone, email, booking link
 
 Images are resized to 2000px and converted to WebP on upload, so full-res phone
@@ -76,10 +76,6 @@ Sveltia is pinned to 0.211.5 in `admin/index.html`. Bump it deliberately.
 
 ## Outstanding
 
-- **Eyecandy** - the client pasted these into chat as inline images rather than
-  uploading files, so they could not be saved or shipped. Needs a zip.
-- **Dr. JPEG's work** - same; his film stills are not on disk yet. His feature
-  slot on /video is deliberately left empty for them.
 - **Audio and Fashion** - Maz sent no tracks and Ibra sent no garment photos, so
   those two grids stay as empty slots by the client's instruction.
 - **Social links** - Instagram, Spotify and Apple Music icons render inert; no

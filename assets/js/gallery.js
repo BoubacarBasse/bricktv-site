@@ -18,6 +18,8 @@
 (function () {
   'use strict';
 
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
   var ICON = '<svg viewBox="0 0 24 24" aria-hidden="true">' +
     '<rect x="3" y="4" width="18" height="16"/>' +
     '<circle cx="8.5" cy="9.5" r="1.5"/>' +
@@ -150,9 +152,9 @@
   Array.prototype.forEach.call(document.querySelectorAll('[data-kind]'), load);
 
   /* ---- home hero ---------------------------------------------------
-     Up to three frames that cross-fade. Until the client uploads any, the
-     hero runs on the scrim and the glitch wordmark alone, which is the
-     intended placeholder state rather than a broken image. */
+     Any number of frames, cross-faded on a timer. Until the client uploads
+     any, the hero runs on the scrim and the glitch wordmark alone, which is
+     the intended placeholder state rather than a broken image. */
   var heroBox = document.querySelector('[data-hero]');
   var hero = heroBox && heroBox.closest('.hero');
   if (heroBox && hero) {
@@ -161,19 +163,39 @@
       .then(function (data) {
         var items = (data && Array.isArray(data.items) ? data.items : [])
           .filter(function (i) { return i && i.image; })
-          .slice(0, 3);
+          .slice(0, 12);
         if (!items.length) return;
         // Markup ships with .hero--bare; frames exist, so restore full height.
         hero.classList.remove('hero--bare');
 
-        items.forEach(function (item, i) {
+        var frames = items.map(function (item, i) {
           var img = el('<img src="' + esc(item.image) + '" alt="' + esc(item.alt || '') + '">');
-          if (i === 0) img.setAttribute('fetchpriority', 'high');
-          else img.setAttribute('fetchpriority', 'low');
+          // Only the first frame is on the critical path; the rest load lazily
+          // so nine hero images do not compete with first paint.
+          if (i === 0) {
+            img.setAttribute('fetchpriority', 'high');
+          } else {
+            img.setAttribute('fetchpriority', 'low');
+            img.setAttribute('loading', 'lazy');
+          }
           heroBox.appendChild(img);
+          return img;
         });
-        // One frame has nothing to cross-fade with; the cycle would blink it out.
-        if (items.length === 1) heroBox.classList.add('hero__frames--single');
+
+        frames[0].classList.add('is-active');
+        if (frames.length < 2 || reduced) return;   // nothing to cross-fade to
+
+        var i = 0;
+        setInterval(function () {
+          // Skip advancing while the hero is scrolled out of view.
+          if (hero.classList.contains('hero--paused')) return;
+          var next = (i + 1) % frames.length;
+          // Pull the next frame in before it is shown, in case it is still lazy.
+          frames[next].loading = 'eager';
+          frames[i].classList.remove('is-active');
+          frames[next].classList.add('is-active');
+          i = next;
+        }, 6000);
       })
       .catch(function () { /* leave the placeholder hero as-is */ });
   }

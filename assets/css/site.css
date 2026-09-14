@@ -215,18 +215,14 @@ a:hover { color: var(--red); }
   width: 100%; height: 100%;
   object-fit: cover; object-position: 50% 30%;
 }
-.hero__frames img:nth-child(1) {
-  opacity: 1;
-  animation: heroCycleFirst 21s infinite 0s, kenburns 21s linear infinite 0s;
-}
-.hero__frames img:nth-child(2) {
+/* Any number of frames, cross-faded by gallery.js. The old nth-child rules
+   hard-coded exactly three; the client now supplies nine. */
+.hero__frames img {
   opacity: 0;
-  animation: heroCycle 21s infinite 7s, kenburns 21s linear infinite 7s;
+  transition: opacity 1.6s ease;
+  animation: kenburns 28s linear infinite alternate;
 }
-.hero__frames img:nth-child(3) {
-  opacity: 0; object-position: 50% 20%;
-  animation: heroCycle 21s infinite 14s, kenburns 21s linear infinite 14s;
-}
+.hero__frames img.is-active { opacity: 1; }
 /* Paused by IntersectionObserver when the hero scrolls out of view. */
 .hero--paused .hero__frames img { animation-play-state: paused; }
 
@@ -253,8 +249,6 @@ a:hover { color: var(--red); }
 }
 .hero__actions { display: flex; gap: 14px; margin-top: 26px; flex-wrap: wrap; }
 
-@keyframes heroCycle      { 0%{opacity:0} 6%{opacity:1} 33%{opacity:1} 40%{opacity:0} 100%{opacity:0} }
-@keyframes heroCycleFirst { 0%{opacity:1} 33%{opacity:1} 40%{opacity:0} 94%{opacity:0} 100%{opacity:1} }
 @keyframes kenburns       { 0%{transform:scale(1.02) translateY(0)} 100%{transform:scale(1.14) translateY(-2%)} }
 @keyframes drift          { 0%{background-position:0 0} 100%{background-position:112px 0} }
 
@@ -328,10 +322,14 @@ a:hover { color: var(--red); }
    the full width, which read as a broken row rather than a deliberate one. */
 .crew {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: clamp(18px,3.5vw,44px);
+  /* Exactly four columns, not auto-fit: auto-fit sized tracks to the minimum
+     and packed the four members to the left, leaving the right half blank. */
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(20px,3vw,48px);
   width: 100%; height: auto;
 }
+@media (max-width: 900px) { .crew { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+@media (max-width: 430px) { .crew { grid-template-columns: minmax(0,1fr); } }
 .crew__member {
   display: flex; flex-direction: column; align-items: center;
   gap: 12px; text-align: center; min-width: 0;
@@ -713,10 +711,8 @@ body.modal-open { overflow: hidden; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .checkerboard { animation: none; }
-  .hero__frames img { animation: none; }
-  .hero__frames img:nth-child(1) { opacity: 1; }
-  .hero__frames img:nth-child(2),
-  .hero__frames img:nth-child(3) { opacity: 0; }
+  .hero__frames img { animation: none; transition: none; }
+  .hero__frames img.is-active { opacity: 1; }
   .craft-card img { transition: none; }
   * { animation-duration: .001ms !important; animation-iteration-count: 1 !important; }
 }
@@ -890,12 +886,7 @@ body.modal-open { overflow: hidden; }
   gap: clamp(24px,4vw,48px); align-items: start;
 }
 
-/* A lone hero frame has nothing to cross-fade with, so hold it steady and
-   keep only the Ken Burns drift. */
-.hero__frames--single img:nth-child(1) {
-  opacity: 1;
-  animation: kenburns 21s linear infinite 0s;
-}
+
 
 /* The contact email is a single 31-character token. Below ~360px it cannot fit
    beside the 38px icon tile, so let it break rather than push the page wide. */
@@ -914,7 +905,12 @@ body.modal-open { overflow: hidden; }
 
 /* The feature image is a portrait frame, so at full content width it renders
    1280x1600 and swallows the page. Cap it and centre it instead. */
-.feature .grid { max-width: 520px; margin: 0 auto; }
-.feature .shot { aspect-ratio: auto; }
-.feature .shot img { width: 100%; height: auto; max-height: 74vh; object-fit: contain; }
-.feature .slot { max-width: 520px; margin: 0 auto; }
+/* Cap the feature by HEIGHT, not width, so a portrait stays a sensible column
+   while a landscape still (Dr. JPEG's) is allowed to run wide.
+   Flex, not grid: as a grid item `width:max-content` sized the column to the
+   image's natural 1800px and `max-width:100%` then resolved against that, so
+   the page overflowed. In a flex row the item shrinks to the container. */
+.feature .grid { display: flex; justify-content: center; }
+.feature .shot { aspect-ratio: auto; min-width: 0; max-width: 100%; }
+.feature .shot img { width: auto; max-width: 100%; height: auto; max-height: 74vh; }
+.feature .slot { max-width: 520px; margin: 0 auto; width: 100%; }
