@@ -76,9 +76,12 @@ Sveltia is pinned to 0.211.5 in `admin/index.html`. Bump it deliberately.
 
 ## Outstanding
 
-- **Photography** - every image slot is empty, waiting on the asset zip.
-  "must have 3.jpg" goes on the Dr. JPEG page.
-- **Headshots** - the four circles show monograms until real photos land.
+- **Eyecandy** - the client pasted these into chat as inline images rather than
+  uploading files, so they could not be saved or shipped. Needs a zip.
+- **Dr. JPEG's work** - same; his film stills are not on disk yet. His feature
+  slot on /video is deliberately left empty for them.
+- **Audio and Fashion** - Maz sent no tracks and Ibra sent no garment photos, so
+  those two grids stay as empty slots by the client's instruction.
 - **Social links** - Instagram, Spotify and Apple Music icons render inert; no
   URLs supplied yet.
 - **Film titles** - taken from YouTube and lightly tidied. Rename any in the CMS.

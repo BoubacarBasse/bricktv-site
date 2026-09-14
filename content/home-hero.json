@@ -1,3 +1,8 @@
 {
-  "items": []
+  "items": [
+    {
+      "image": "/assets/uploads/hero-team.webp",
+      "alt": "The Brick TV crew"
+    }
+  ]
 }

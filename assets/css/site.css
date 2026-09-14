@@ -323,14 +323,18 @@ a:hover { color: var(--red); }
 /* ==========================================================================
    Crew row (Home)
    ========================================================================== */
+/* Four columns that line up with the craft cards above. As a flex row the
+   four members stopped around 40% of the width while the grid above spanned
+   the full width, which read as a broken row rather than a deliberate one. */
 .crew {
-  display: flex; gap: clamp(18px,3.5vw,44px);
-  flex-wrap: wrap; justify-content: flex-start;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: clamp(18px,3.5vw,44px);
   width: 100%; height: auto;
 }
 .crew__member {
   display: flex; flex-direction: column; align-items: center;
-  gap: 12px; width: 150px; text-align: center;
+  gap: 12px; text-align: center; min-width: 0;
 }
 .crew__member strong { display: block; font-size: 16px; }
 .crew__member .role { font-size: 12.5px; color: var(--bone-muted); }
@@ -906,3 +910,10 @@ body.modal-open { overflow: hidden; }
    removes this class and restores the full-height cinematic hero. */
 .hero--bare { min-height: min(68vh, 600px); }
 .hero--bare .hero__content { padding-top: clamp(64px, 12vh, 130px); }
+
+/* The feature image is a portrait frame, so at full content width it renders
+   1280x1600 and swallows the page. Cap it and centre it instead. */
+.feature .grid { max-width: 520px; margin: 0 auto; }
+.feature .shot { aspect-ratio: auto; }
+.feature .shot img { width: 100%; height: auto; max-height: 74vh; object-fit: contain; }
+.feature .slot { max-width: 520px; margin: 0 auto; }
