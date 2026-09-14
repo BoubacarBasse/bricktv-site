@@ -74,6 +74,11 @@ Sveltia is pinned to 0.211.5 in `admin/index.html`. Bump it deliberately.
 - The booking URL lives in `CONFIG` at the top of `assets/js/site.js`. Clearing
   it routes every Book button to the call/email fallback modal.
 - Ambient motion is disabled under `prefers-reduced-motion`.
+- `assets/uploads/` is served `must-revalidate`, not `immutable`. Filenames
+  there are stable while the contents get replaced, so a long immutable cache
+  pinned old bytes to a live URL and Safari would not let go of them even on a
+  hard refresh. If you ever do replace a file under the same name and someone
+  still sees the old one, give the new file a new name.
 - The ask form posts to Netlify Forms with a honeypot; if it ever fails it falls
   back to showing the crew's email rather than dropping the message.
 

@@ -28,10 +28,14 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
+# The CMS media folder. NOT immutable: filenames here are stable while their
+# contents get replaced, so "immutable" told browsers never to re-check a URL
+# whose bytes had changed, and Safari honoured that through a hard refresh.
+# Revalidate every time instead - the ETag makes a fresh copy a 304 with no body.
 [[headers]]
   for = "/assets/uploads/*"
   [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
+    Cache-Control = "public, max-age=0, must-revalidate"
 
 [[headers]]
   for = "/assets/fonts/*"
