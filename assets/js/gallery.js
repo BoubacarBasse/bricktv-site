@@ -135,6 +135,23 @@
     }
     nodes.forEach(function (n) { grid.appendChild(n); });
     grid.setAttribute('data-state', 'filled');
+
+    // A feature image runs full width: portrait at 4:5, landscape at 16:9 so a
+    // wide still does not tower. Decided from the file's own dimensions rather
+    // than per page, so a CMS replacement of either shape lands correctly.
+    if (kind === 'feature') {
+      var im = grid.querySelector('img');
+      if (im) {
+        var mark = function () {
+          if (im.naturalWidth > im.naturalHeight) {
+            var fig = im.closest('.shot');
+            if (fig) fig.classList.add('is-landscape');
+          }
+        };
+        if (im.complete && im.naturalWidth) mark();
+        else im.addEventListener('load', mark);
+      }
+    }
   }
 
   function load(grid) {

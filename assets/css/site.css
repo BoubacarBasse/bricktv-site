@@ -905,12 +905,12 @@ body.modal-open { overflow: hidden; }
 
 /* The feature image is a portrait frame, so at full content width it renders
    1280x1600 and swallows the page. Cap it and centre it instead. */
-/* Cap the feature by HEIGHT, not width, so a portrait stays a sensible column
-   while a landscape still (Dr. JPEG's) is allowed to run wide.
-   Flex, not grid: as a grid item `width:max-content` sized the column to the
-   image's natural 1800px and `max-width:100%` then resolved against that, so
-   the page overflowed. In a flex row the item shrinks to the container. */
-.feature .grid { display: flex; justify-content: center; }
-.feature .shot { aspect-ratio: auto; min-width: 0; max-width: 100%; }
-.feature .shot img { width: auto; max-width: 100%; height: auto; max-height: 74vh; }
+/* The feature runs the full content width - the client wants it big. A portrait
+   holds 4:5, a landscape holds 16:9 so it stays wide instead of towering.
+   gallery.js tags the landscape case from the image's own dimensions, so a
+   replacement uploaded through the CMS sizes itself with no code change. */
+.feature .grid { display: block; }
+.feature .shot { aspect-ratio: 4/5; width: 100%; max-width: 100%; margin: 0; }
+.feature .shot img { width: 100%; height: 100%; object-fit: cover; }
+.feature .shot.is-landscape { aspect-ratio: 16/9; }
 .feature .slot { max-width: 520px; margin: 0 auto; width: 100%; }
