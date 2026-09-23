@@ -1,0 +1,86 @@
+{
+  "seo": {
+    "title": "Wedding Packages | Brick TV",
+    "description": "Wedding films and photography from Brick TV in Winnipeg. Work directly with the artists creating your film, from the first conversation to the final edit."
+  },
+  "hero": {
+    "headline": "Your wedding, filmed by the people who got to know you.",
+    "support": "Work directly with the artists creating your film, from the first conversation to the final edit.",
+    "button": "Book an appointment",
+    "image": "/assets/uploads/wedding-shoes.webp",
+    "alt": "Bridal shoes resting on the hem of the wedding dress"
+  },
+  "section1": {
+    "heading": "Made to Feel Like Your Day Again.",
+    "text": "The quiet moments before the ceremony. The way you look at each other. The laughter, the tears, the people who came together for you. We capture your wedding with intention, so years from now, you do not just remember how it looked. You remember exactly how it felt.",
+    "image": "/assets/uploads/wedding-veil.webp",
+    "alt": "The bride seen softly through her veil"
+  },
+  "packages_heading": "Packages",
+  "packages": [
+    {
+      "name": "Essential Wedding Coverage",
+      "price": "$1,200",
+      "note": "For small and simple weddings.",
+      "items": [
+        "Up to 4 hours",
+        "1 location",
+        "300 edited photos",
+        "1 minute 30 second event highlight reel"
+      ],
+      "cta": false
+    },
+    {
+      "name": "Story Wedding Package",
+      "price": "$3,500",
+      "note": "Full wedding day coverage, with more in-depth, multi-angle coverage.",
+      "items": [
+        "Up to 8 hours",
+        "Up to 4 locations",
+        "450 edited photos plus a physical photo album",
+        "4 minute cinematic story film",
+        "Vows and speeches",
+        "Interviews with the bride and groom"
+      ],
+      "cta": false
+    },
+    {
+      "name": "Premium Plus Wedding Package",
+      "price": "Consultation-based pricing",
+      "note": "For weddings that go beyond traditional coverage. Designed for larger multi-day celebrations, destination weddings, and events needing extended or customized coverage.",
+      "tail": "Every Premium Plus package is tailored to the scale and needs of the wedding.",
+      "items": [
+        "Multiple days of photography and videography",
+        "Additional locations",
+        "Travel outside the city or country",
+        "Expanded photo delivery",
+        "Longer cinematic films",
+        "Interviews, vows and speeches",
+        "More in-depth coverage"
+      ],
+      "cta": true,
+      "cta_text": "Book an appointment"
+    }
+  ],
+  "testimonials": [
+    {
+      "quote": "We cried watching our special day.",
+      "attribution": "Hiba"
+    }
+  ],
+  "section2": {
+    "heading": "Your Story. Told Like No One Else’s.",
+    "text": "No two love stories are the same. That is why we approach every wedding with fresh eyes, taking the time to understand you, the people you love, and the moments that matter most. Every frame is thoughtfully crafted around your story, creating something personal, timeless, and entirely yours.",
+    "image": "/assets/uploads/wedding-bouquet.webp",
+    "alt": "The bridal bouquet held in henna-painted hands"
+  },
+  "film": {
+    "heading": "A wedding film",
+    "url": "https://youtu.be/ZSmYxfDvO58",
+    "title": "A Brick TV wedding film"
+  },
+  "closing": {
+    "heading": "Every wedding starts with a conversation.",
+    "button": "Book an appointment"
+  }
+}

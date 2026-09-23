@@ -406,22 +406,6 @@
 .wed-strip img { width: 100%; height: clamp(180px,26vw,360px); object-fit: cover; display: block; }
 @media (max-width: 700px) { .wed-strip { grid-template-columns: repeat(3, minmax(0,1fr)); } .wed-strip img { height: 150px; } }
 
-/* --------------------------------------------------------------------------
-   Preview banner - concept pages only. Removed when the chosen concept is
-   built for real.
-   -------------------------------------------------------------------------- */
-.wed-preview-bar {
-  background: var(--ink-raised);
-  border-bottom: 1px solid var(--wed-rule);
-  padding: 10px var(--wed-x);
-  font-size: 12px; letter-spacing: .16em; text-transform: uppercase;
-  color: var(--bone-muted);
-  display: flex; gap: 16px; flex-wrap: wrap; align-items: center;
-}
-.wed-preview-bar strong { color: var(--bone); font-weight: 600; }
-.wed-preview-bar a { color: var(--bone-muted); border-bottom: 1px solid transparent; }
-.wed-preview-bar a:hover { color: var(--red); border-color: var(--red); }
-
 @media (prefers-reduced-motion: reduce) {
   .wed-hero--reveal .wed-hero__img { animation: none; }
 }

@@ -92,6 +92,95 @@ collections:
               - { name: alt, label: Alt text, widget: string, required: false }
               - { name: caption, label: Caption, widget: string, required: false }
 
+  - name: wedding
+    label: Wedding page
+    description: Everything on the Wedding Packages page. Saving here updates the live page.
+    files:
+      - name: wedding
+        label: Wedding Packages
+        file: content/wedding.json
+        fields:
+          - name: hero
+            label: Top of the page
+            widget: object
+            fields:
+              - { name: headline, label: Headline, widget: string, hint: "The big line over the photograph. This one is still a draft, change it to whatever you want." }
+              - { name: support, label: Supporting line, widget: string }
+              - { name: button, label: Button text, widget: string }
+              - { name: image, label: Background photograph, widget: image }
+              - { name: alt, label: Photo description, widget: string, required: false, hint: "Describes the photo for screen readers and search. Never shown on the page." }
+
+          - name: section1
+            label: First text section
+            widget: object
+            fields:
+              - { name: heading, label: Heading, widget: string }
+              - { name: text, label: Text, widget: text }
+              - { name: image, label: Photograph, widget: image }
+              - { name: alt, label: Photo description, widget: string, required: false }
+
+          - { name: packages_heading, label: Packages heading, widget: string }
+
+          - name: packages
+            label: Packages
+            label_singular: Package
+            widget: list
+            summary: '{{fields.name}} - {{fields.price}}'
+            hint: "Drag to reorder. Add or remove packages freely, the layout follows."
+            fields:
+              - { name: name, label: Name, widget: string }
+              - { name: price, label: Price, widget: string, hint: "Free text, so \"$1,200\" and \"Consultation-based pricing\" both work." }
+              - { name: note, label: Short description, widget: text, required: false }
+              - name: items
+                label: What is included
+                label_singular: Item
+                widget: list
+                field: { name: item, label: Item, widget: string }
+              - { name: tail, label: Closing line, widget: string, required: false, hint: "Optional extra line under the description." }
+              - { name: cta, label: Show a Book button on this package, widget: boolean, default: false }
+              - { name: cta_text, label: Button text, widget: string, required: false, default: Book an appointment }
+
+          - name: testimonials
+            label: Testimonials
+            label_singular: Testimonial
+            widget: list
+            summary: '{{fields.quote}}'
+            hint: "One quote shows large and alone. Add a second and they sit side by side."
+            fields:
+              - { name: quote, label: Quote, widget: text, hint: "Leave the quotation marks out, the page adds those." }
+              - { name: attribution, label: Who said it, widget: string, required: false }
+
+          - name: section2
+            label: Second text section
+            widget: object
+            fields:
+              - { name: heading, label: Heading, widget: string }
+              - { name: text, label: Text, widget: text }
+              - { name: image, label: Photograph, widget: image }
+              - { name: alt, label: Photo description, widget: string, required: false }
+
+          - name: film
+            label: Wedding film
+            widget: object
+            fields:
+              - { name: heading, label: Heading, widget: string }
+              - { name: url, label: Video link, widget: string, required: false, hint: "A YouTube or Vimeo link. Empty this field and the whole film section disappears from the page." }
+              - { name: title, label: Film title, widget: string, required: false }
+
+          - name: closing
+            label: Bottom of the page
+            widget: object
+            fields:
+              - { name: heading, label: Heading, widget: string }
+              - { name: button, label: Button text, widget: string }
+
+          - name: seo
+            label: Search engines
+            widget: object
+            fields:
+              - { name: title, label: Page title, widget: string, hint: "Shows in the browser tab and as the headline in search results." }
+              - { name: description, label: Description, widget: text, hint: "The sentence under the title in search results." }
+
   - name: features
     label: Feature images
     description: The wide image at the foot of each artist page, and the home hero.

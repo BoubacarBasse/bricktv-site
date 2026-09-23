@@ -10,6 +10,7 @@ build command; `netlify.toml` publishes the repo root as-is.
 index.html      home
 video.html      Dr. JPEG        photo.html    Loic Matabishi
 audio.html      Maz the Prod    fashion.html  dystopian
+wedding.html    Wedding Packages
 contact.html    faq.html
 admin/          Sveltia CMS
 content/        the JSON the CMS edits
@@ -27,6 +28,7 @@ Go to `/admin`, sign in with GitHub, add the item, hit publish. That commits to
 this repo, Netlify rebuilds, and the page updates in about a minute.
 
 - **Portfolios** - films, photographs, tracks, looks
+- **Wedding page** - every word, photograph, package and quote on it
 - **Feature images** - the wide image at the foot of each artist page, and the
   home hero (up to twelve frames, cross-fading about every six seconds)
 - **Settings** - phone, email, booking link
@@ -51,6 +53,26 @@ layout change. A slot is just the empty state of a filled grid.
 Copy lives in the HTML, not the CMS. Bios and headings are in the page so they
 are indexable and work without JS; only the media lists are fetched. If editing
 copy is wanted later, the step up is Eleventy and this JSON carries over.
+
+### The wedding page is the exception
+
+The contract for `wedding.html` required every word editable without code, so it
+is the one page whose copy comes from JSON. `assets/js/wedding.js` fetches
+`content/wedding.json` and patches the page from it.
+
+The page still ships with its full copy written into the HTML. That is not
+duplication for its own sake: with JS off, or before the fetch lands, the page
+is complete and readable, and nothing pops in. The HTML holds the copy as of the
+last deploy; once the client edits in the CMS the live text comes from the JSON.
+Crawlers that run JS see the edit, ones that do not see the deployed version.
+
+If that gap ever matters, the fix is the same Eleventy step mentioned above, and
+`content/wedding.json` is already the right shape for it.
+
+Packages and testimonials are lists: add, remove and reorder them in the CMS and
+the layout follows. Clearing the film's video link hides the film section rather
+than leaving a hole. One testimonial sets large and alone; two or more sit side
+by side.
 
 ### CMS sign-in
 
