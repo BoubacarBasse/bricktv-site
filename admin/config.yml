@@ -198,6 +198,18 @@ collections:
             fields:
               - { name: image, label: Image, widget: image }
               - { name: alt, label: Alt text, widget: string, required: false }
+              - name: focus
+                label: Which part of the photo to show
+                widget: select
+                required: false
+                options:
+                  - { label: "Top of the photo", value: top }
+                  - { label: "Near the top", value: high }
+                  - { label: "Upper (the usual one)", value: upper }
+                  - { label: "Middle", value: middle }
+                  - { label: "Lower", value: lower }
+                  - { label: "Bottom of the photo", value: bottom }
+                hint: "The hero is a wide strip, so a tall photo gets cropped top and bottom. If someone's face or head is cut off, move this up. Leave it empty for the usual framing."
 
       - name: video-feature
         label: Video page feature

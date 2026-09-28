@@ -172,6 +172,16 @@
      Any number of frames, cross-faded on a timer. Until the client uploads
      any, the hero runs on the scrim and the glitch wordmark alone, which is
      the intended placeholder state rather than a broken image. */
+  /* The hero is a wide band and the client's frames are tall portraits, so
+     object-fit crops most of the height away. One global focal point cannot
+     suit every photograph: a face sitting high in the frame loses its forehead.
+     So a frame may name the part of the photo to keep, in plain language, and
+     the CMS offers the same list. No value means the CSS default of 50% 30%. */
+  var FOCUS = {
+    top: '0%', high: '10%', upper: '30%',
+    middle: '50%', lower: '70%', bottom: '100%'
+  };
+
   var heroBox = document.querySelector('[data-hero]');
   var hero = heroBox && heroBox.closest('.hero');
   if (heroBox && hero) {
@@ -187,6 +197,8 @@
 
         var frames = items.map(function (item, i) {
           var img = el('<img src="' + esc(item.image) + '" alt="' + esc(item.alt || '') + '">');
+          var focus = FOCUS[String(item.focus || '').trim()];
+          if (focus) img.style.objectPosition = '50% ' + focus;
           // Only the first frame is on the critical path; the rest load lazily
           // so nine hero images do not compete with first paint.
           if (i === 0) {

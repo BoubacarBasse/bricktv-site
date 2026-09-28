@@ -26,11 +26,13 @@
     },
     {
       "image": "/assets/uploads/hero-07.webp",
-      "alt": "Wax print styling on olive"
+      "alt": "Wax print styling on olive",
+      "focus": "high"
     },
     {
       "image": "/assets/uploads/hero-08.webp",
-      "alt": "Wax print headwrap portrait"
+      "alt": "Wax print headwrap portrait",
+      "focus": "top"
     },
     {
       "image": "/assets/uploads/hero-09.webp",
