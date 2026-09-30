@@ -203,13 +203,14 @@ collections:
                 widget: select
                 required: false
                 options:
-                  - { label: "Top of the photo", value: top }
-                  - { label: "Near the top", value: high }
-                  - { label: "Upper (the usual one)", value: upper }
-                  - { label: "Middle", value: middle }
-                  - { label: "Lower", value: lower }
-                  - { label: "Bottom of the photo", value: bottom }
-                hint: "The hero is a wide strip, so a tall photo gets cropped top and bottom. If someone's face or head is cut off, move this up. Leave it empty for the usual framing."
+                  - { label: "Very top of the photo", value: "0" }
+                  - { label: "Just below the top", value: "5" }
+                  - { label: "Near the top", value: "10" }
+                  - { label: "A bit above the middle (the usual one)", value: "30" }
+                  - { label: "Middle", value: "50" }
+                  - { label: "Lower", value: "70" }
+                  - { label: "Bottom of the photo", value: "100" }
+                hint: "The hero is a wide strip, so a tall photo gets cropped top and bottom. Move this up if a face or head is cut off, down if there is empty space above someone's head. Leave it empty for the usual framing. Note the photo also drifts as it slowly zooms, so check it both ways."
 
       - name: video-feature
         label: Video page feature

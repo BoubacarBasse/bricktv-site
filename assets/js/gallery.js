@@ -174,13 +174,27 @@
      the intended placeholder state rather than a broken image. */
   /* The hero is a wide band and the client's frames are tall portraits, so
      object-fit crops most of the height away. One global focal point cannot
-     suit every photograph: a face sitting high in the frame loses its forehead.
-     So a frame may name the part of the photo to keep, in plain language, and
-     the CMS offers the same list. No value means the CSS default of 50% 30%. */
-  var FOCUS = {
-    top: '0%', high: '10%', upper: '30%',
-    middle: '50%', lower: '70%', bottom: '100%'
+     suit every photograph: a face sitting high in the frame loses its forehead,
+     and nudging it up from there leaves dead air above the head. So a frame
+     carries its own vertical focal point, as a percentage, and the CMS offers
+     the same values behind plain-language labels. Nothing set means the CSS
+     default of 50% 30%.
+
+     A percentage rather than a handful of named steps because the useful range
+     is bunched near the top: 0 and 10 were both wrong for the same photograph,
+     and the answer was 5. */
+  var FOCUS_WORDS = {            // the first version of this field used words
+    top: 0, high: 10, upper: 30, middle: 50, lower: 70, bottom: 100
   };
+
+  function focusFor(value) {
+    var v = String(value == null ? '' : value).trim();
+    if (!v) return null;
+    if (Object.prototype.hasOwnProperty.call(FOCUS_WORDS, v)) return FOCUS_WORDS[v] + '%';
+    var n = parseFloat(v);
+    if (!isFinite(n)) return null;
+    return Math.max(0, Math.min(100, n)) + '%';
+  }
 
   var heroBox = document.querySelector('[data-hero]');
   var hero = heroBox && heroBox.closest('.hero');
@@ -197,7 +211,7 @@
 
         var frames = items.map(function (item, i) {
           var img = el('<img src="' + esc(item.image) + '" alt="' + esc(item.alt || '') + '">');
-          var focus = FOCUS[String(item.focus || '').trim()];
+          var focus = focusFor(item.focus);
           if (focus) img.style.objectPosition = '50% ' + focus;
           // Only the first frame is on the critical path; the rest load lazily
           // so nine hero images do not compete with first paint.
