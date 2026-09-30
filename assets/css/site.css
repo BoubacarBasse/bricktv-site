@@ -155,9 +155,13 @@ a:hover { color: var(--red); }
 /* The link list dissolves on desktop so every item shares the nav's own gap,
    which is what puts the wordmark in the middle of the row. */
 .nav__links { display: contents; }
-.nav__links > a:nth-child(-n+3) { order: 1; }
+/* Four before the wordmark, the rest after: that puts the four crafts, which
+   are the four artists, together on one side and leaves Weddings, FAQ and
+   Contact with the Book button on the other. Adjust both numbers together if a
+   link is ever added or removed. */
+.nav__links > a:nth-child(-n+4) { order: 1; }
 .nav__wordmark { order: 2; font-size: 20px; margin: 0 clamp(6px,2vw,22px); }
-.nav__links > a:nth-child(n+4)  { order: 3; }
+.nav__links > a:nth-child(n+5)  { order: 3; }
 .nav__book {
   order: 4; font-family: var(--body); font-size: 12px;
   letter-spacing: .14em; text-transform: uppercase;
@@ -171,7 +175,11 @@ a:hover { color: var(--red); }
 /* Wordmark fallback for the plain (non-glitch) nav lockup */
 .nav__wordmark .wordmark { font-size: inherit; }
 
-@media (max-width: 640px) {
+/* Seven links plus the Book button stop fitting one row well above the old
+   640px switch: from there up to roughly 800px the button was dropping onto a
+   second row by itself, which reads as broken rather than responsive. The
+   drawer starts earlier instead. */
+@media (max-width: 820px) {
   .nav { justify-content: space-between; gap: 12px; padding: 12px 16px; }
   .nav__toggle {
     order: 1; display: inline-flex; flex-direction: column;
