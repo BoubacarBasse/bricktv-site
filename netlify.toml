@@ -42,15 +42,20 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
+# Scripts and styles revalidate rather than sitting in a browser for an hour.
+# They change in lockstep with content/*.json, and an hour-stale script paired
+# with fresh JSON silently ignores fields it does not know about yet. The files
+# are a few KB each and an unchanged one comes back as a 304 with no body, so
+# correctness is worth the round trip.
 [[headers]]
   for = "/assets/css/*"
   [headers.values]
-    Cache-Control = "public, max-age=3600"
+    Cache-Control = "public, max-age=0, must-revalidate"
 
 [[headers]]
   for = "/assets/js/*"
   [headers.values]
-    Cache-Control = "public, max-age=3600"
+    Cache-Control = "public, max-age=0, must-revalidate"
 
 # Content the CMS edits: must never be served stale or the site shows old work.
 [[headers]]

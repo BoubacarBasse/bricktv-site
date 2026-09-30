@@ -96,6 +96,12 @@ Sveltia is pinned to 0.211.5 in `admin/index.html`. Bump it deliberately.
 - The booking URL lives in `CONFIG` at the top of `assets/js/site.js`. Clearing
   it routes every Book button to the call/email fallback modal.
 - Ambient motion is disabled under `prefers-reduced-motion`.
+- Scripts, styles and `assets/uploads/` all revalidate rather than being
+  cached for a fixed period. They change in step with `content/*.json`, and a
+  stale script paired with fresh JSON silently drops fields it does not know
+  about. If you ever do reintroduce a long cache here, version the `<script>`
+  and `<link>` references when the files change, because the HTML is the only
+  thing guaranteed fresh.
 - `assets/uploads/` is served `must-revalidate`, not `immutable`. Filenames
   there are stable while the contents get replaced, so a long immutable cache
   pinned old bytes to a live URL and Safari would not let go of them even on a
