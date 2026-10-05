@@ -13,11 +13,27 @@
      Confirm the booking URL with the client before launch. Clearing it
      routes every Book button to the call/email fallback modal instead. */
   var CONFIG = {
-    bookingUrl: 'https://calendly.com/boubacarbasse333/onboarding-call',
+    bookingUrl: 'https://calendly.com/mohamedouldmoulaye0510/free-consultation',
     phone: '204-998-3654',
     phoneHref: 'tel:2049983654',
     email: 'Mohamedouldmoulaye0510@gmail.com'
   };
+
+  /* content/site.json is what the CMS "Contact details" screen writes. Until
+     now nothing read it, so changing the booking link in /admin quietly did
+     nothing and only an edit here took effect. The values above are the
+     deployed defaults; this overrides them with whatever the client last
+     saved. Booking happens on a click, long after this settles, and if the
+     fetch fails the defaults still stand. */
+  fetch('content/site.json', { cache: 'no-cache' })
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (d) {
+      if (!d) return;
+      if (typeof d.booking_url === 'string') CONFIG.bookingUrl = d.booking_url.trim();
+      if (d.phone) { CONFIG.phone = d.phone; CONFIG.phoneHref = 'tel:' + String(d.phone).replace(/[^0-9+]/g, ''); }
+      if (d.email) CONFIG.email = d.email;
+    })
+    .catch(function () { /* keep the deployed defaults */ });
 
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 

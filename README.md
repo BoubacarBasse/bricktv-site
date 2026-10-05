@@ -31,7 +31,11 @@ this repo, Netlify rebuilds, and the page updates in about a minute.
 - **Wedding page** - every word, photograph, package and quote on it
 - **Feature images** - the wide image at the foot of each artist page, and the
   home hero (up to twelve frames, cross-fading about every six seconds)
-- **Settings** - phone, email, booking link
+- **Settings** - phone, email, booking link. `assets/js/site.js` reads
+  `content/site.json` on load and overrides the defaults compiled into it, so
+  changing the booking link in the CMS takes effect. The phone and email in the
+  page footers are still hard-coded HTML, so a change there updates the booking
+  modal but not the footer.
 
 Images are resized to 2000px and converted to WebP on upload, so full-res phone
 photos will not bloat the site. Films take a YouTube link or a bare ID.
@@ -114,8 +118,11 @@ Sveltia is pinned to 0.211.5 in `admin/index.html`. Bump it deliberately.
 
 - **Audio and Fashion** - Maz sent no tracks and Ibra sent no garment photos, so
   those two grids stay as empty slots by the client's instruction.
-- **Social links** - Instagram, Spotify and Apple Music icons render inert; no
-  URLs supplied yet.
+- **Social links** - all four Instagram accounts and Dr. JPEG's YouTube are
+  linked. Maz's Spotify and Apple Music icons are still inert; no URLs yet.
+  Links are published canonical: the client supplied them from Instagram's
+  share sheet, which appends a `stkn` share token and `utm_source` tracking,
+  and neither belongs on the page.
 - **Film titles** - taken from YouTube and lightly tidied. Rename any in the CMS.
 - **Contact details** - phone and email are unverified; the client called the
   email temporary.
