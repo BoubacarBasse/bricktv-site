@@ -105,8 +105,18 @@
 
   function book() {
     if (CONFIG.bookingUrl) {
-      var win = window.open(CONFIG.bookingUrl, '_blank', 'noopener');
-      if (win) return;           // popup blocked -> fall through to the modal
+      /* No 'noopener' in the feature string: with it set the spec requires
+         window.open to return null even when the tab opened fine, so the
+         null check below read every successful booking as a blocked popup
+         and put the call/email modal up behind Calendly. Sever the opener on
+         the handle instead, which gets the same protection and still leaves
+         null meaning what it is supposed to mean. */
+      var win = window.open(CONFIG.bookingUrl, '_blank');
+      if (win) {
+        try { win.opener = null; } catch (e) { /* cross-origin, already safe */ }
+        return;
+      }
+      // genuinely blocked, so fall through to the call/email fallback
     }
     openModal();
   }
