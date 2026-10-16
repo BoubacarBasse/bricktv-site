@@ -1,8 +1,4 @@
 {
-  "seo": {
-    "title": "Wedding Packages | Brick TV",
-    "description": "Wedding films and photography from Brick TV in Winnipeg. Work directly with the artists creating your film, from the first conversation to the final edit."
-  },
   "hero": {
     "headline": "Your wedding, filmed by the people who got to know you.",
     "support": "Work directly with the artists creating your film, from the first conversation to the final edit.",
@@ -28,7 +24,9 @@
         "300 edited photos",
         "1 minute 30 second event highlight reel"
       ],
-      "cta": false
+      "tail": "",
+      "cta": false,
+      "cta_text": "Book an appointment"
     },
     {
       "name": "Story Wedding Package",
@@ -42,13 +40,14 @@
         "Vows and speeches",
         "Interviews with the bride and groom"
       ],
-      "cta": false
+      "tail": "",
+      "cta": false,
+      "cta_text": "Book an appointment"
     },
     {
       "name": "Premium Plus Wedding Package",
       "price": "Consultation-based pricing",
       "note": "For weddings that go beyond traditional coverage. Designed for larger multi-day celebrations, destination weddings, and events needing extended or customized coverage.",
-      "tail": "Every Premium Plus package is tailored to the scale and needs of the wedding.",
       "items": [
         "Multiple days of photography and videography",
         "Additional locations",
@@ -58,6 +57,7 @@
         "Interviews, vows and speeches",
         "More in-depth coverage"
       ],
+      "tail": "Every Premium Plus package is tailored to the scale and needs of the wedding.",
       "cta": true,
       "cta_text": "Book an appointment"
     }
@@ -75,12 +75,16 @@
     "alt": "The bridal bouquet held in henna-painted hands"
   },
   "film": {
-    "heading": "A wedding film",
-    "url": "https://youtu.be/ZSmYxfDvO58",
-    "title": "A Brick TV wedding film"
+    "heading": "A Cinematic Wedding Film",
+    "url": "https://youtu.be/k8EHfTfyA1k",
+    "title": "Imad + Hiba | From This Day Forward — A Cinematic Wedding Film"
   },
   "closing": {
     "heading": "Every wedding starts with a conversation.",
     "button": "Book an appointment"
+  },
+  "seo": {
+    "title": "Wedding Packages | Brick TV",
+    "description": "Wedding films and photography from Brick TV in Winnipeg. Work directly with the artists creating your film, from the first conversation to the final edit."
   }
 }
