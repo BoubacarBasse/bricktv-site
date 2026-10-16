@@ -13,7 +13,7 @@
      Confirm the booking URL with the client before launch. Clearing it
      routes every Book button to the call/email fallback modal instead. */
   var CONFIG = {
-    bookingUrl: 'https://calendly.com/mohamedouldmoulaye0510/free-consultation',
+    bookingUrl: 'https://calendly.com/mohamedouldmoulaye0510/free-consultation-1',
     phone: '204-998-3654',
     phoneHref: 'tel:2049983654',
     email: 'Mohamedouldmoulaye0510@gmail.com'
